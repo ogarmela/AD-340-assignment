@@ -1,0 +1,51 @@
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var countTextView: TextView
+    private lateinit var incrementButton: Button
+    private lateinit var decrementButton: Button
+    private lateinit var resetButton: Button
+
+    private var count = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        countTextView = findViewById(R.id.count_textview)
+        incrementButton = findViewById(R.id.increment_button)
+        decrementButton = findViewById(R.id.decrement_button)
+        resetButton = findViewById(R.id.reset_button)
+
+        incrementButton.setOnClickListener {
+            val previousCount = count
+            count++
+            updateCountTextView()
+            val message = "Increment: $previousCount -> $count"
+            showToast(message)
+        }
+
+        decrementButton.setOnClickListener {
+            val previousCount = count
+            count--
+            updateCountTextView()
+            val message = "Decrement: $previousCount -> $count"
+            showToast(message)
+        }
+
+        resetButton.setOnClickListener {
+            val previousCount = count
+            count = 0
+            updateCountTextView()
+            val message = "Reset: $previousCount -> $count"
+            showToast(message)
+        }
+    }
+
+    private fun updateCountTextView() {
+        countTextView.text = count.toString()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+}
