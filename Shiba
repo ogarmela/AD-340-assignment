@@ -1,0 +1,31 @@
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var shibaImageView: ImageView
+    private lateinit var foodButton: Button
+    private lateinit var touchButton: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        shibaImageView = findViewById(R.id.shibaImageView)
+        foodButton = findViewById(R.id.foodButton)
+        touchButton = findViewById(R.id.touchButton)
+
+        touchButton.setOnClickListener {
+            shibaImageView.setImageResource(R.drawable.angry_shiba)
+            Toast.makeText(this, "You touched the Shiba Inu! Woof!", Toast.LENGTH_SHORT).show()
+        }
+
+        foodButton.setOnClickListener {
+            shibaImageView.setImageResource(R.drawable.calm_shiba)
+            Toast.makeText(this, "You gave the Shiba Inu food! Yum!", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
