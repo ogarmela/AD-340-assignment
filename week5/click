@@ -1,1 +1,40 @@
+import android.widget.Toast
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+
+class CounterViewModel : BaseObservable() {
+
+    @Bindable
+    var counter = 0
+        private set
+
+    fun increment() {
+        val previousValue = counter
+        counter++
+        notifyPropertyChanged(BR.counter)
+        showToast("Increment: $previousValue -> $counter")
+    }
+
+    fun decrement() {
+        val previousValue = counter
+        counter--
+        notifyPropertyChanged(BR.counter)
+        showToast("Decrement: $previousValue -> $counter")
+    }
+
+    fun reset() {
+        val previousValue = counter
+        counter = 0
+        notifyPropertyChanged(BR.counter)
+        showToast("Reset: $previousValue -> $counter")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            MyApp.instance,
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+}
 
