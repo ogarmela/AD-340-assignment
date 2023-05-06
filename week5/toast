@@ -1,0 +1,23 @@
+import android.widget.Toast
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import com.example.button.BR
+
+class ButtonViewModel : BaseObservable() {
+
+    @get:Bindable
+    var buttonName = "Interactive Button"
+        private set
+
+    fun onButtonClicked() {
+        showToast("The button '$buttonName' is touched")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            MyApp.instance,
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+}
