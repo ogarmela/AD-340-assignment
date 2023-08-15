@@ -1,0 +1,6 @@
+fun calculate(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
+    return operation(a, b)
+}
+
+val sum = calculate(1, 2) { a, b -> a + b }
+val product = calculate(3, 4) { a, b -> a * b }
